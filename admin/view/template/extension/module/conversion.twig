@@ -1,0 +1,75 @@
+{{ header }}{{ column_left }}
+
+<div id="content">
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="pull-right">
+                <button type="submit" form="form-conversion" data-toggle="tooltip" title="{{ button_save }}" class="btn btn-primary"><i class="fa fa-save"></i></button>
+                <a href="{{ cancel }}" data-toggle="tooltip" title="{{ button_cancel }}" class="btn btn-default"><i class="fa fa-reply"></i></a>
+            </div>
+            {{ heading_title }}
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        {% if error_warning %}
+            <div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+            </div>
+        {% endif %}
+
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-conversion" class="form-horizontal">
+
+            <!-- Enabled/Disabled status -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
+                <div class="col-sm-10">
+                    <select name="module_conversion_status" id="input-status" class="form-control">
+                        {% if module_conversion_status %}
+                            <option value="1" selected="selected">{{ text_enabled }}</option>
+                            <option value="0">{{ text_disabled }}</option>
+                        {% else %}
+                            <option value="1">{{ text_enabled }}</option>
+                            <option value="0" selected="selected">{{ text_disabled }}</option>
+                        {% endif %}
+                    </select>
+                </div>
+            </div>
+
+            <!-- Advertiser Code -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-advertiser-code">{{ advertiser_code_label }} <span title="{{ required }}" style="color: red">*</span> </label>
+                <div class="col-sm-10">
+                    <input name="module_conversion_advertiser_code" value="{{ module_conversion_advertiser_code }}" type="text" id="input-advertiser-code" class="form-control" required/>
+                </div>
+            </div>
+
+            <!-- Advertiser Key -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-advertiser-key">{{ advertiser_key_label }} <span title="{{ required }}" style="color: red">*</span></label>
+                <div class="col-sm-10">
+                    <input name="module_conversion_advertiser_key" value="{{ module_conversion_advertiser_key }}" type="text" id="input-advertiser-key" class="form-control" required/>
+                </div>
+            </div>
+
+            <!-- Api Token -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-api-token">{{ api_token_label }} <span title="{{ required }}" style="color: red">*</span></label>
+                <div class="col-sm-10">
+                    <input name="module_conversion_api_token" value="{{ module_conversion_api_token }}" type="text" id="input-api-token" class="form-control" required/>
+                </div>
+            </div>
+
+            <!-- Telephone -->
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-telephone">{{ api_telephone_label }} <span title="{{ telephone }}"></span></label>
+                <div class="col-sm-10">
+                    <input name="module_conversion_telephone" value="{{ module_conversion_telephone }}" type="text" id="input-telephone" class="form-control" required/>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+{{ footer }}
